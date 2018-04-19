@@ -1,13 +1,13 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=usbtemp
-PKG_VERSION:=2017-08-16
+PKG_VERSION:=2018-03-07
 PKG_RELEASE:=$(PKG_SOURCE_VERSION)
 
 PKG_SOURCE_PROTO:=git
-PKG_SOURCE_URL:=git://github.com/jaka/usb-thermometer.git
+PKG_SOURCE_URL:=git://github.com/usbtemp/usbtemp-cli.git
 PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
-PKG_SOURCE_VERSION:=3c27812d53c22bba75ced63a7c785d32306fd380
+PKG_SOURCE_VERSION:=bbf04f1ba8dbb3cf4a51fdd8f216fcd34b984393
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)-$(PKG_SOURCE_VERSION).tar.gz
 
 include $(INCLUDE_DIR)/package.mk
@@ -20,7 +20,7 @@ endef
 
 define Package/$(PKG_NAME)/install
 	$(INSTALL_DIR) $(1)/usr/bin/
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/usbtemp $(1)/usr/bin/usbtemp
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/usbtemp-cli $(1)/usr/bin/usbtemp-cli
 endef
 
 $(eval $(call BuildPackage,$(PKG_NAME)))
