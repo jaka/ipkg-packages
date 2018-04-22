@@ -20,8 +20,17 @@ define Package/$(PKG_NAME)
 endef
 
 define Package/$(PKG_NAME)/install
+	$(INSTALL_DIR) $(1)/etc/init.d
+	$(INSTALL_BIN) ./files/node-agent.init $(1)/etc/init.d/node-agent
 	$(INSTALL_DIR) $(1)/usr/bin/
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/node-agent $(1)/usr/bin/
+	$(INSTALL_DIR) $(1)/usr/share/node-agent
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/babel.so $(1)/usr/share/node-agent
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/dhcpleases.so $(1)/usr/share/node-agent
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/fileoutput.so $(1)/usr/share/node-agent
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/resources.so $(1)/usr/share/node-agent
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/system.so $(1)/usr/share/node-agent
+	$(INSTALL_DIR) $(1)/www/nodewatcher
 endef
 
 $(eval $(call BuildPackage,$(PKG_NAME)))

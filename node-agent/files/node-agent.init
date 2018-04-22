@@ -1,0 +1,23 @@
+#!/bin/sh /etc/rc.common
+
+START=90
+
+USE_PROCD=1
+NAME=node-agent
+PROG=/usr/bin/node-agent
+
+start_service() {
+	procd_open_instance
+	procd_set_param command "$PROG"
+	procd_append_param command -m /usr/share/node-agent -f /tmp/feed -l /tmp/dhcp.leases
+	procd_set_param respawn
+	procd_close_instance
+}
+
+stop() {
+	service_stop "$PROG"
+}
+
+reload() {
+	service_reload "$PROG"
+}
