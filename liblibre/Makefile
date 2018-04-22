@@ -17,8 +17,11 @@ define Package/$(PKG_NAME)
 endef
 
 define Build/InstallDev
-	$(INSTALL_DIR) $(1)/usr/include/libre
-	$(CP) $(PKG_BUILD_DIR)/include $(1)/usr/include/libre/
+	$(INSTALL_DIR) $(STAGING_DIR)/usr/include/libre
+	$(INSTALL_DATA) $(PKG_BUILD_DIR)/include/config.h $(STAGING_DIR)/usr/include/libre/
+	$(INSTALL_DATA) $(PKG_BUILD_DIR)/include/scheduler.h $(STAGING_DIR)/usr/include/libre/
+	$(INSTALL_DATA) $(PKG_BUILD_DIR)/include/stream.h $(STAGING_DIR)/usr/include/libre/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/liblibre.so $(STAGING_DIR)/usr/lib/
 endef
 
 define Package/$(PKG_NAME)/install
