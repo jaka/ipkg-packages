@@ -1,3 +1,5 @@
+include $(TOPDIR)/rules.mk
+
 PKG_NAME:=liblibre
 PKG_VERSION:=2018-04-21
 PKG_RELEASE:=$(PKG_SOURCE_VERSION)
